@@ -1,0 +1,59 @@
+<header class="container" style="width:100%">
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="{{ page.dir }}">
+            <img class="d-none d-xl-block" src="/assets/images/site/logo-header-shadow.png" height="66px">
+            <img class="d-xl-none" src="/assets/images/site/logo-header-q.png" height="50px">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation">
+            ☰
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-header">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            {%- for item in site.data.nav[layout.nav].pages -%}
+                {%- assign item_page = site.pages | where: "dir", site.data.nav[layout.nav].path | find: "slug", item.slug %}
+                <li class="nav-item">
+                    <a class="nav-link" href="
+                        {%- if page.sv -%}
+                            {{- site.data.nav[layout.nav].path -}}
+                            {%- unless item_page.slug == 'index' -%}
+                                {{- item_page.slug -}}
+                            {%- endunless -%}
+                        {%- else -%}
+                            /en{{- site.data.nav[layout.nav].path -}}
+                            {%- unless item_page.en_slug == 'index' -%}
+                                {{- item_page.en_slug -}}
+                            {%- endunless -%}
+                        {%- endif -%}">
+                        {%- if page.sv -%}
+                            <span class="nav-text">{{- item_page.title -}}</span>
+                            {%- if item_page.slug == page.slug -%}<span class="sr-only">(current)</span>{%- endif -%}
+                        {%- else -%}
+                            <span class="nav-text">{{- item_page.en_title -}}</span>
+                            {%- if item_page.en_slug == page.en_slug -%}<span class="sr-only">(current)</span>{%- endif -%}
+                        {%- endif -%}
+                    </a>
+                </li>
+            {%- endfor %}
+            </ul>
+        </div>
+    </nav>
+    <a style="padding:0px; float:right" href="
+        {%- if page.sv -%}
+            /en{{- site.data.nav[layout.nav].path -}}
+            {%- unless page.en_slug == 'index' -%}
+                {{- page.en_slug -}}
+            {%- endunless -%}
+        {%- else -%}
+            {{- site.data.nav[layout.nav].path -}}
+            {%- unless page.slug == 'index' -%}
+                {{- page.slug -}}
+            {%- endunless -%}
+        {%- endif -%}
+    ">
+        {%- if page.sv -%}
+            In English
+        {%- else -%}
+            På svenska
+        {%- endif -%}
+    </a>
+</header>
