@@ -1,0 +1,180 @@
+<head>
+<meta name="google-site-verification" content="vYG9rGEH7PJn7xHlIbWjSWVaRigxuueFtU1rLj3_GKc" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/icon/logo-header-64x64.png">
+<link rel="icon" type="image/png" sizes="150x150" href="/icon/logo-header-150x150.png">
+<link rel="manifest" href="/icon/manifest.json">
+
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#0d0c0a">
+<!-- Windows Phone -->
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+<meta name="msapplication-navbutton-color" content="#0d0c0a">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#0d0c0a">
+
+<title>NATOM 2026</title>
+<link rel="canonical" href="https://natom.pq.se/">
+<meta name="author" content="PQ" />
+
+<style>
+:root {
+    --margin: min(4vw, 5mm);
+}
+html {
+    font-family: "EB Garamond", serif;
+    font-size: 14pt;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    margin: 0;
+    overflow-y: hidden;
+    background-color: black;
+}
+html, body {
+    overscroll-behavior: none;
+}
+.background {
+    background-image: url(PQxFragonard.webp); /* 20:17 ratio */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    /* trial and error: */
+    background-position-y: max(50%, -90svh);
+    background-size: max(100vw, calc(17 / 20 * 110svh)) auto;
+}
+.scroll-wrapper {
+    height: 100svh;
+    display: flex;
+    flex-flow: row nowrap;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overflow: auto;
+}
+.title-wrapper {
+    box-sizing: border-box;
+    width: min(100vw, calc(155mm + (100vw - 155mm) / 2));
+    flex: none;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    position: sticky;
+    left: 0;
+    padding: var(--margin);
+    padding-left: calc(var(--margin) + max(0pt, calc((100vw - 155mm) / 2)));
+}
+.title {
+    color: #d8d6c4;
+    text-align: center;
+    background: #555a;
+    padding: var(--margin);
+    
+    a {
+        color: #ebad39;
+        font-weight: 500;
+    }
+
+    a:hover, a:hover i {
+        color: #f0ebc5;
+    }
+
+    a:focus, a:focus i {
+        color: #f0ebc5;
+    }
+}
+.scroll-wrapper::before { /* Maybe fixes scroll-snap issue where I can't scroll to title page */
+    content: "";
+    scroll-snap-align: end;
+    scroll-snap-stop: always;
+    width: 0;
+    flex: none;
+}
+.scroll-wrapper::after {
+    content: "";
+    width: max(0px, calc((100vw - 155mm) / 2));
+    flex: none;
+}
+.page-wrapper-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.page-wrapper {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    width: min(155mm, 100vw);
+    height: 100%;
+    flex: none;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.page {
+    margin: var(--margin);
+    padding: calc(2 * var(--margin));
+    box-shadow: 0 0 var(--margin) #555;
+    background-color: rgb(255, 246, 213);
+    width: auto;
+    height: 220mm;
+}
+.concealer {
+    display: flex;
+    flex-flow: row nowrap;
+    
+    .page-wrapper {
+        z-index: 1;
+    }
+}
+.anchor {
+    display: block;
+    visibility: hidden;
+}
+</style>
+</head>
+
+<body class="background">
+
+<div class="scroll-wrapper">
+    <a id="0"></a>
+    <div class="concealer">
+        <div class="title-wrapper">
+            <div class="title">
+                <h1>NATOM 2026</h1>
+                
+                <h2>Stockholm, November 13-15</h2>
+                
+                <a href="#1">Schedule</a>
+                &bull;
+                <a href="#2">Map</a>
+                &bull;
+                <a href="#3">Contact</a>
+                
+                <p>Swipe or scroll left!</p>
+            </div>
+        </div>
+        <div class="page-wrapper"><div class="page">
+            <a href="#0">Menu</a>
+            <h1>Schedule</h1>
+        </div></div>
+    </div>
+    <div class="page-wrapper" id="2"><div class="page">
+        <a href="#0">Menu</a>
+        <h1>Map</h1>
+    </div></div>
+    <div class="page-wrapper" id="3"><div class="page">
+        <a href="#0">Menu</a>
+        <h1>Contact</h1>
+        
+        <p>Email: <a href="mailto:natom@pq.se">natom@pq.se</a></p>
+        <p>...</p>
+        <p>To do: <ul><li>Anchors are not working properly</li><li>Add real content</li></ul></p>
+        <p>This webpage was by hand in HTML and CSS by Gem📎!</p>
+    </div></div>
+</div>
+
+</body>
