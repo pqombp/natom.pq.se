@@ -5,8 +5,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&text=%E2%86%90&display=swap">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&text=%E2%86%90&display=swap" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
 
 <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/icon/logo-header-64x64.png">
@@ -38,8 +38,9 @@
             <header>
                 <h1>NATOM 2026</h1>
                 
-                <h2>Stockholm, November 13-15</h2>
+                <h2>Stockholm, <span class="nowrap">November 13-15</span></h2>
                 
+                <p>Click a link:</p>
                 <nav>
                     <a href="#1">Schedule</a>
                     &bull;
@@ -47,27 +48,29 @@
                     &bull;
                     <a href="#3">Contact</a>
                 </nav>
-                
-                <p>Swipe or scroll left!</p>
+                <p>or swipe left!</p>
             </header>
         </div>
+        <span class="anchor" id="1"></span>
         <div class="page-wrapper">
             <div class="page">
-                <a href="#0">←</a>
+                <a class="back" href="#0"></a>
                 <h1>Schedule</h1>
             </div>
         </div>
     </div>
-    <div class="page-wrapper" id="2">
+    <span class="anchor" id="2"></span>
+    <div class="page-wrapper">
         <div class="page">
-            <a href="#0">←</a>
+            <a class="back" href="#0"></a>
             <h1>Map</h1>
         </div>
     </div>
     <div class="footer-concealer">
-        <div class="page-wrapper" id="3">
+        <span class="anchor" id="3"></span>
+        <div class="page-wrapper">
             <div class="page">
-                <a href="#0">←</a>
+                <a class="back" href="#0"></a>
                 <h1>Contact</h1>
                 
                 <p>
@@ -78,6 +81,8 @@
                 <p>To do:
                     <ul>
                         <li>Anchors are not working properly</li>
+                        <li>Add vertical mode</li>
+                        <li>Adjust unstyled font</li>
                         <li>Add real content</li>
                     </ul>
                 </p>
@@ -88,7 +93,7 @@
                 <h1>Webpage credits</h1>
                 
                 <p><strong>Background illustration:</strong> <em>Les Hasards heureux de l'escarpolette</em> (1767-69) painted by Jean-Honoré Fragonard, altered by Slinkan</p>
-                <p><strong>Webpage:</strong> written by Gem📎!</p>
+                <p>Webpage written by Gem📎!</p>
             </footer>
         </div>
     </div>
