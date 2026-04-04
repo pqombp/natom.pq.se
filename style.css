@@ -13,63 +13,11 @@ html {
 
 body {
     margin: 0;
-    overflow-y: hidden;
     background-color: black;
 }
 
 html, body {
     overscroll-behavior: none;
-}
-
-.background {
-    background-image: url(img/PQxFragonard.webp); /* 20:17 ratio */
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    /* trial and error: */
-    background-position-y: max(50%, -90svh);
-    background-size: max(100vw, calc(17 / 20 * 110svh)) auto;
-}
-
-.scroll-wrapper {
-    height: 100svh;
-    display: flex;
-    flex-flow: row nowrap;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    overflow: auto;
-    position: relative;
-}
-
-.scroll-wrapper-start { /* Maybe fixes scroll-snap issue where I can't scroll to title page */
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    width: 0;
-    flex: none;
-}
-
-.scroll-wrapper-end {
-    scroll-snap-align: end;
-    scroll-snap-stop: always;
-    width: 0;
-    flex: none;
-}
-
-.page-wrapper-wrapper {
-    display: flex;
-    flex-flow: row nowrap;
-}
-
-.page-wrapper {
-    position: relative;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    width: min(var(--page-width), 100vw);
-    height: 100%;
-    flex: none;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    overscroll-behavior-y: none;
 }
 
 .page {
@@ -79,33 +27,10 @@ html, body {
     box-shadow: 0 0 var(--margin) #555;
     background-color: rgb(255, 246, 213);
     width: auto;
-    min-height: 220mm;
     
     a {
         color: brown;
     }
-}
-
-.header-wrapper {
-    box-sizing: border-box;
-    width: min(100vw, calc(var(--page-width) + var(--side-width)));
-    flex: none;
-    overflow-x: scroll;
-    /* scrollbar-width: none; */
-    position: sticky;
-    left: 0;
-    padding: var(--margin);
-    padding-left: calc(var(--margin) + max(0pt, var(--side-width)));
-}
-
-.footer-wrapper {
-    box-sizing: border-box;
-    width: min(100vw, var(--page-width));
-    flex: none;
-    position: sticky;
-    left: var(--side-width);
-    padding: var(--margin);
-    margin-left: calc(0pt - min(100vw, var(--page-width)));
 }
 
 header, footer {
@@ -116,35 +41,10 @@ header, footer {
     
     a {
         color: #ebad39;
-        font-weight: 500;
     }
 
-    a:hover, a:hover i {
+    a:hover, a:focus-visible {
         color: #f0ebc5;
-    }
-
-    a:focus, a:focus i {
-        color: #f0ebc5;
-    }
-}
-
-.header-concealer {
-    display: flex;
-    flex-flow: row nowrap;
-    
-    .page-wrapper {
-        z-index: 1;
-    }
-}
-
-.footer-concealer {
-    display: flex;
-    flex-flow: row nowrap;
-    width: calc(2 * min(100vw, var(--page-width)) + var(--side-width));
-    flex: none;
-    
-    .page-wrapper {
-        z-index: 1;
     }
 }
 
@@ -165,15 +65,192 @@ header, footer {
     font-size: 20pt;
 }
 
-.back::after {
-    color: rgb(255, 246, 213);
-    content: "←";
-}
+/* Horizontal mode */
 
-.anchor {
-    transform: translateX(calc(min(var(--page-width), 100vw) + var(--side-width) - var(--margin)));
-}
+body:has(#htoggle:checked) {
+    overflow-y: hidden;
+    
+    .htoggle {
+        display: none;
+    }
+    
+    &.background {
+        background-image: url(img/PQxFragonard.webp); /* 20:17 ratio */
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        /* trial and error: */
+        background-position-y: max(50%, -90svh);
+        background-size: max(100vw, calc(17 / 20 * 110svh)) auto;
+    }
+
+    .scroll-wrapper {
+        height: 100svh;
+        display: flex;
+        flex-flow: row nowrap;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        overflow: auto;
+        position: relative;
+    }
+
+    .scroll-wrapper-start { /* Maybe fixes scroll-snap issue where I can't scroll to title page */
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        width: 0;
+        flex: none;
+    }
+
+    .scroll-wrapper-end {
+        scroll-snap-align: end;
+        scroll-snap-stop: always;
+        width: 0;
+        flex: none;
+    }
+
+    .page-wrapper-wrapper {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    .page-wrapper {
+        position: relative;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        width: min(var(--page-width), 100vw);
+        height: 100%;
+        flex: none;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        overscroll-behavior-y: none;
+    }
+
+    .page {
+        min-height: 220mm;
+    }
+
+    .header-wrapper {
+        box-sizing: border-box;
+        width: min(100vw, calc(var(--page-width) + var(--side-width)));
+        flex: none;
+        overflow-x: scroll;
+        /* scrollbar-width: none; */
+        position: sticky;
+        left: 0;
+        padding: var(--margin);
+        padding-left: calc(var(--margin) + max(0pt, var(--side-width)));
+    }
+
+    .footer-wrapper {
+        box-sizing: border-box;
+        width: min(100vw, var(--page-width));
+        flex: none;
+        position: sticky;
+        left: var(--side-width);
+        padding: var(--margin);
+        margin-left: calc(0pt - min(100vw, var(--page-width)));
+    }
+
+    .header-concealer {
+        display: flex;
+        flex-flow: row nowrap;
+        
+        .page-wrapper {
+            z-index: 1;
+        }
+    }
+
+    .footer-concealer {
+        display: flex;
+        flex-flow: row nowrap;
+        width: calc(2 * min(100vw, var(--page-width)) + var(--side-width));
+        flex: none;
+        
+        .page-wrapper {
+            z-index: 1;
+        }
+    }
+
+    .back {
+        display: inline-block;
+        background-color: brown;
+        text-decoration: none;
+        text-align: center;
+        align-content: center;
+        position: absolute;
+        top: calc(0pt - var(--seal-radius));
+        left: 50%;
+        transform: translate(-50%, 0);
+        box-sizing: border-box;
+        height: calc(2 * var(--seal-radius));
+        width: calc(2 * var(--seal-radius));
+        clip-path: circle(calc(.95 * var(--seal-radius)));
+        font-size: 20pt;
+    }
+
+    .back::after {
+        color: rgb(255, 246, 213);
+        content: "←";
+    }
+
+    .anchor {
+        transform: translateX(calc(min(var(--page-width), 100vw) + var(--side-width) - var(--margin)));
+    }
+}  /* end horizontal mode */
+
+/* Vertical mode */
+
+body:has(#vtoggle:checked) {
+    .vtoggle {
+        display: none;
+    }
+    
+    &.background {
+        background-image: url(img/PQxFragonard.webp); /* 20:17 ratio */
+        background-attachment: fixed;
+        /* background-repeat: no-repeat; */
+        background-position-x: center;
+        /* trial and error: */
+        /* background-position-y: max(50%, -90svh); */
+        background-size: max(100vw, calc(17 / 20 * 110svh)) auto;
+    }
+    
+    .scroll-wrapper {
+        width: min(100vw, var(--page-width));
+        margin: 0 auto;
+    }
+    
+    .header-wrapper, .footer-wrapper {
+        padding: var(--margin);
+    }
+
+    .back::after {
+        color: rgb(255, 246, 213);
+        content: "↑";
+        display: block;
+        padding-bottom: 5px;
+    }
+}  /* end vertical mode */
 
 .nowrap {
     white-space: nowrap;
+}
+
+/* Shoutouts to lyra rebane */
+.toggle {
+    input {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    
+    label {
+        cursor: pointer;
+        color: #ebad39;
+        text-decoration: underline;
+        
+        &:hover, &:focus {
+            color: #f0ebc5;
+        }
+    }
 }
