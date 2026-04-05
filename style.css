@@ -6,20 +6,40 @@
 }
 
 @font-face {
-    font-family: "fallback";
-    src: local(Georgia);
-    size-adjust: 105%;
+    font-family: "TorreFarfan";
+    src: url(font/TorreFarfan-Regular.woff2) format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "P22 Operina Fiore";
+    src: url(font/P22\ Operina\ W00\ Fiore.woff2) format('woff2');
+    font-display: swap;
 }
 
 html {
-    font-family: "EB Garamond", "fallback", serif;
+    font-family: "TorreFarfan", "Garamond", serif;
     font-size: 14pt;
     -webkit-text-size-adjust: 100%;
 }
 
+h1 {
+    font-family: "P22 Operina Fiore";
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+}
+
+/* Spacing adjustments */
+p { line-height: 1.2em; }
+h1 + h2, h1 + p { margin-top: 0; }
+.nav {
+    display: inline-block;
+    margin-bottom: 2px;
+}
+
 body {
     margin: 0;
-    background-color: black;
 }
 
 html, body {
@@ -28,22 +48,24 @@ html, body {
 
 @media screen and (max-width: 600px) {
     .background {
-        background-image: url(img/PQxFragonard-med.webp)
+        background-image: url(img/PQxFragonard-med.webp);
     }
 }
-
 @media screen and (min-width: 601px) {
     .background {
-        background-image: url(img/PQxFragonard.webp)
+        background-image: url(img/PQxFragonard.webp);
     }
 }
 
 .background {
-    background-color: rgb(0, 45, 28);
-    /* image has 20:17 ratio */
+    background-color: #012f1d;
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
+}
+
+a:active {
+    text-decoration: none;
 }
 
 .page {
@@ -51,12 +73,11 @@ html, body {
     margin: var(--margin);
     padding: calc(2 * var(--margin));
     box-shadow: 0 0 var(--margin) #555;
-    background-color: rgb(255, 246, 213);
+    background-color: #fff6d5;
     width: auto;
     
-    a {
-        color: brown;
-    }
+    a { color: #a52a2a; }
+    a:hover, a:focus-visible { color: #e00000; }
 }
 
 header, footer {
@@ -65,13 +86,8 @@ header, footer {
     background: #555a;
     padding: var(--margin);
     
-    a {
-        color: #ebad39;
-    }
-
-    a:hover, a:focus-visible {
-        color: #f0ebc5;
-    }
+    a, h1 { color: #ebad39; }
+    a:hover, a:focus-visible { color: #f0ebc5; }
 }
 
 .back {
@@ -91,6 +107,28 @@ header, footer {
     font-size: 20pt;
 }
 
+.nowrap {
+    display: inline-block;
+}
+
+/* Shoutouts to lyra rebane */
+.toggle {
+    input {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    
+    label {
+        cursor: pointer;
+        color: #ebad39;
+        text-decoration: underline;
+        
+        &:hover, &:focus { color: #f0ebc5; }
+        &:active { text-decoration: none; }
+    }
+}
+
 /* Horizontal mode */
 
 body:has(#htoggle:checked) {
@@ -99,7 +137,7 @@ body:has(#htoggle:checked) {
     .vertical-mode {
         display: none;
     }
-
+    
     .scroll-wrapper {
         height: 100svh;
         display: flex;
@@ -108,27 +146,30 @@ body:has(#htoggle:checked) {
         scroll-behavior: smooth;
         overflow: auto;
         position: relative;
+        overflow-y: hidden;
+        overscroll-behavior-y: none;
     }
-
-    .scroll-wrapper-start { /* Maybe fixes scroll-snap issue where I can't scroll to title page */
+    
+    /* Maybe fixes scroll-snap issue where I can't scroll to title page */
+    .scroll-wrapper-start {
         scroll-snap-align: start;
         scroll-snap-stop: always;
         width: 0;
         flex: none;
     }
-
+    
     .scroll-wrapper-end {
         scroll-snap-align: end;
         scroll-snap-stop: always;
         width: 0;
         flex: none;
     }
-
+    
     .page-wrapper-wrapper {
         display: flex;
         flex-flow: row nowrap;
     }
-
+    
     .page-wrapper {
         position: relative;
         scroll-snap-align: center;
@@ -140,11 +181,11 @@ body:has(#htoggle:checked) {
         scrollbar-width: none;
         overscroll-behavior-y: none;
     }
-
+    
     .page {
         min-height: 220mm;
     }
-
+    
     .header-wrapper {
         box-sizing: border-box;
         width: min(100vw, calc(var(--page-width) + var(--side-width)));
@@ -156,7 +197,7 @@ body:has(#htoggle:checked) {
         padding: var(--margin);
         padding-left: calc(var(--margin) + max(0pt, var(--side-width)));
     }
-
+    
     .footer-wrapper {
         box-sizing: border-box;
         width: min(100vw, var(--page-width));
@@ -166,7 +207,7 @@ body:has(#htoggle:checked) {
         padding: var(--margin);
         margin-left: calc(0pt - min(100vw, var(--page-width)));
     }
-
+    
     .header-concealer {
         display: flex;
         flex-flow: row nowrap;
@@ -175,7 +216,7 @@ body:has(#htoggle:checked) {
             z-index: 1;
         }
     }
-
+    
     .footer-concealer {
         display: flex;
         flex-flow: row nowrap;
@@ -186,10 +227,10 @@ body:has(#htoggle:checked) {
             z-index: 1;
         }
     }
-
+    
     .back {
         display: inline-block;
-        background-color: brown;
+        background-color: #a52a2a;
         text-decoration: none;
         text-align: center;
         align-content: center;
@@ -203,12 +244,14 @@ body:has(#htoggle:checked) {
         clip-path: circle(calc(.95 * var(--seal-radius)));
         font-size: 20pt;
     }
-
+    
     .back::after {
-        color: rgb(255, 246, 213);
-        content: "←";
+        color: #fff6d5;
+        content: "☚";
+        position: relative;
+        top: 3px;
     }
-
+    
     .anchor {
         transform: translateX(calc(min(var(--page-width), 100vw) + var(--side-width) - var(--margin)));
     }
@@ -229,34 +272,14 @@ body:has(#vtoggle:checked) {
     .header-wrapper, .footer-wrapper {
         padding: var(--margin);
     }
-
+    
     .back::after {
         color: rgb(255, 246, 213);
-        content: "↑";
-        display: block;
-        padding-bottom: 5px;
+        content: "☚";
+        writing-mode: vertical-rl;
+        text-orientation: sideways;
+        position: relative;
+        right: 6px;
+        bottom: 5px;
     }
 }  /* end vertical mode */
-
-.nowrap {
-    white-space: nowrap;
-}
-
-/* Shoutouts to lyra rebane */
-.toggle {
-    input {
-        opacity: 0;
-        position: absolute;
-        pointer-events: none;
-    }
-    
-    label {
-        cursor: pointer;
-        color: #ebad39;
-        text-decoration: underline;
-        
-        &:hover, &:focus {
-            color: #f0ebc5;
-        }
-    }
-}
