@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
@@ -19,6 +21,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#012f1d">
 
 <title>NATOM 2026</title>
+<meta name="description" content="Webpage for NATOM 2026">
 <link rel="canonical" href="https://natom.pq.se/">
 <meta name="author" content="PQ">
 <meta name="google-site-verification" content="vYG9rGEH7PJn7xHlIbWjSWVaRigxuueFtU1rLj3_GKc" />
@@ -26,31 +29,30 @@
 
 <body class="background">
 
-<div class="scroll-wrapper">
+<div class="scroll-wrapper" role="main">
     <div class="scroll-wrapper-start"></div>
     <a id="top"></a>
     <div class="header-concealer">
         <div class="header-wrapper">
-            <header>
-                <h1 style="font-size: 3em">NatoM 2026</h1>
+            <header role="banner">
+                <h1 class="title">NatoM 2026</h1>
                 
                 <h2>Stockholm, <span class="nowrap">November 13-15</span></h2>
                 
-                <p>Click a link:
-                    <br>
-                    <span class="nav">
+                <p>Click a link:</p>
+                    <nav>
                         <a href="#1">Schedule</a>
                         -
                         <a href="#2">Map</a>
                         -
                         <a href="#3">Contact</a>
-                    </span>
-                    <br>
+                    </nav>
+                <p>
                     or
                     <span class="horizontal-mode">swipe left!</span>
                     <span class="vertical-mode">scroll down!</span>
                 </p>
-                <div class="toggle">
+                <div class="toggle" role="radiogroup">
                     <span class="horizontal-mode">
                         <small>If nothing works, try
                             <input type="radio" name="toggle" id="vtoggle">
@@ -69,7 +71,7 @@
         <span class="anchor" id="1"></span>
         <div class="page-wrapper">
             <div class="page">
-                <a class="back" href="#top" title="Back to menu"></a>
+                <a class="back" href="#top" aria-label="Back to menu" title="Back to menu"></a>
                 <h1>Schedule</h1>
                 <p>Teﬆing ligatures <br> testing line breaks <br> hello!</p>
             </div>
@@ -78,7 +80,7 @@
     <span class="anchor" id="2"></span>
     <div class="page-wrapper">
         <div class="page">
-            <a class="back" href="#top" title="Back to menu"></a>
+            <a class="back" href="#top" aria-label="Back to menu" title="Back to menu"></a>
             <h1>Map</h1>
         </div>
     </div>
@@ -86,7 +88,7 @@
         <span class="anchor" id="3"></span>
         <div class="page-wrapper">
             <div class="page">
-                <a class="back" href="#top" title="Back to menu"></a>
+                <a class="back" href="#top" aria-label="Back to menu" title="Back to menu"></a>
                 <h1>Contact</h1>
                 
                 <p>
@@ -97,13 +99,12 @@
                 <p>To do:
                     <ul>
                         <li>Add real content</li>
-                        <li>Work on accessibility</li>
                     </ul>
                 </p>
             </div>
         </div>
         <div class="footer-wrapper">
-            <footer>
+            <footer class="contentinfo">
                 <h1>Webpage credits</h1>
                 
                 <p>The background illustration is <cite>Les Hasards heureux de l'escarpolette</cite> [1767-69] painted by Jean-Honoré Fragonard, altered by Slinkan.</p>
@@ -121,3 +122,4 @@
 </div>
 
 </body>
+</html>

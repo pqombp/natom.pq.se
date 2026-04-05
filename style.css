@@ -33,10 +33,9 @@ h1 {
 /* Spacing adjustments */
 p { line-height: 1.2em; }
 h1 + h2, h1 + p { margin-top: 0; }
-.nav {
-    display: inline-block;
-    margin-bottom: 2px;
-}
+p:has(+ nav) { margin-bottom: 0; }
+nav { margin-bottom: 4px; }
+nav + p { margin-top: 0; }
 
 body {
     margin: 0;
@@ -90,21 +89,36 @@ header, footer {
     a:hover, a:focus-visible { color: #f0ebc5; }
 }
 
+.title {
+    font-size: 3rem;
+    /* text-shadow: 0 0 5px black; */
+    text-shadow: 1px 4px 0px black;
+}
+
 .back {
-    display: inline-block;
-    background-color: brown;
-    text-decoration: none;
-    text-align: center;
-    align-content: center;
     position: absolute;
     top: calc(0pt - var(--seal-radius));
     left: 50%;
     transform: translate(-50%, 0);
+    display: inline-block;
+    background-color: #a52a2a;
     box-sizing: border-box;
     height: calc(2 * var(--seal-radius));
     width: calc(2 * var(--seal-radius));
     clip-path: circle(calc(.95 * var(--seal-radius)));
+    text-decoration: none;
+    text-align: center;
+    align-content: center;
     font-size: 20pt;
+}
+
+.back::after {
+    color: #fff6d5;
+}
+
+.back:hover::after, .back:focus-visible::after
+{
+    text-shadow: 0 0 2mm #ff0000;
 }
 
 .nowrap {
@@ -126,6 +140,10 @@ header, footer {
         
         &:hover, &:focus { color: #f0ebc5; }
         &:active { text-decoration: none; }
+    }
+    
+    input:focus-visible + label {
+        color: #f0ebc5;
     }
 }
 
@@ -228,25 +246,7 @@ body:has(#htoggle:checked) {
         }
     }
     
-    .back {
-        display: inline-block;
-        background-color: #a52a2a;
-        text-decoration: none;
-        text-align: center;
-        align-content: center;
-        position: absolute;
-        top: calc(0pt - var(--seal-radius));
-        left: 50%;
-        transform: translate(-50%, 0);
-        box-sizing: border-box;
-        height: calc(2 * var(--seal-radius));
-        width: calc(2 * var(--seal-radius));
-        clip-path: circle(calc(.95 * var(--seal-radius)));
-        font-size: 20pt;
-    }
-    
     .back::after {
-        color: #fff6d5;
         content: "☚";
         position: relative;
         top: 3px;
@@ -274,7 +274,6 @@ body:has(#vtoggle:checked) {
     }
     
     .back::after {
-        color: rgb(255, 246, 213);
         content: "☚";
         writing-mode: vertical-rl;
         text-orientation: sideways;
