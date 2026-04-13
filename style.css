@@ -30,6 +30,8 @@ h1 {
     text-align: center;
 }
 
+h2 { font-weight: 400; }
+
 /* Spacing adjustments */
 p { line-height: 1.2em; }
 h1 + h2, h1 + p { margin-top: 0; }
