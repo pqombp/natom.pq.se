@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="64x64" href="/icon/logo-header-64x64.png">
@@ -110,70 +111,13 @@
         </div>
         <span class="anchor" id="2"></span>
         <div class="page-wrapper">
-            <div class="page">
+            <div class="page map-page">
                 <a class="back" href="#top" aria-label="Back to menu" title="Back to menu"></a>
                 <h1>Map</h1>
-
-                <!-- Leaflet -->
-                <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-                <div id="natom-map"></div>
-
-                <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-                <script>
-                    // Create map
-                    const map = L.map('natom-map');
-
-                    // OpenStreetMap tiles
-                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                    }).addTo(map);
-
-                    // Festival locations
-                    const locations = [
-                        {
-                            name: 'Kröken',
-                            lat: 59.34699943630691,
-                            lng: 18.070643738272448
-                        },
-                        {
-                            name: 'Borggården',
-                            lat: 59.34739985562139,
-                            lng: 18.07372444416761
-                        },
-                        {
-                            name: 'Östra Real',
-                            lat: 59.339478501503756,
-                            lng: 18.086217660883587
-                        },
-                        {
-                            name: 'Medicinska Föreningen',
-                            lat: 59.34835907780092,
-                            lng: 18.026639298435388
-                        },
-                        {
-                            name: 'Maskinparken',
-                            lat: 59.352647984200104,
-                            lng: 18.067263961244404
-                        }
-                    ];
-
-                    // Add markers
-                    locations.forEach(location => {
-                        L.marker([location.lat, location.lng])
-                            .addTo(map)
-                            .bindPopup(`<strong>${location.name}</strong>`);
-                    });
-
-                    // Zoom to show all locations
-                    const bounds = L.latLngBounds(
-                        locations.map(location => [location.lat, location.lng])
-                    );
-
-                    map.fitBounds(bounds, { padding: [30, 30] });
-                </script>
+                <p class="map-intro">NATOM 2026 venues around Stockholm</p>
+                <div id="natom-map" role="application" aria-label="Interactive map showing NATOM 2026 venues"></div>
+                <p class="map-attribution-note">Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> · Map tiles © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a></p>
+                <noscript><p>Please enable JavaScript to view the interactive map.</p></noscript>
             </div>
         </div>
         <span class="anchor" id="3"></span>
@@ -182,134 +126,72 @@
                 <a class="back" href="#top" aria-label="Back to menu" title="Back to menu"></a>
                 <h1>Gig schedule</h1>
 
+                <style>
+                    .gig-schedule { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 0 0 2rem; }
+                    .gig-schedule th, .gig-schedule td { padding: 0.48rem 0.35rem; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(255,255,255,0.22); }
+                    .gig-schedule th { font-weight: bold; }
+                    .gig-schedule .gig-time { width: 7.8rem; white-space: nowrap; font-weight: bold; }
+                    .gig-section { margin-top: 1.8rem; }
+                    .gig-section h3 { margin-bottom: 0.6rem; }
+                    @media (max-width: 420px) {
+                        .gig-schedule .gig-time { width: 6.6rem; }
+                        .gig-schedule th, .gig-schedule td { padding: 0.42rem 0.2rem; }
+                    }
+                </style>
+
                 <section class="gig-section">
-                    <h3>FRIDAY 13th <br> PARTY at MF</h3>
+                    <h3>FRIDAY<br>PARTY @ MF</h3>
                     <table class="gig-schedule" aria-label="Friday party gig schedule">
                         <tbody>
-                            <tr>
-                                <td class="gig-time">21:45-22:15</td>
-                                <td>Humpsvakar och Rumpskakar</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">22:15-22:45</td>
-                                <td>PromenadorQuestern och med Baletten Paletten</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">22:45-23:15</td>
-                                <td>Axelbandet</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">23:15-23:45</td>
-                                <td>AllianceOrchestret och Chalmersbaletten</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">23:45-00:15</td>
-                                <td>Retuperän WBK</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">00:15-00:45</td>
-                                <td>Strindens Promenade Orchester</td>
-                            </tr>
+                            <tr><td class="gig-time">21:45-22:15</td><td>Humpsvakar och Rumpskakar</td></tr>
+                            <tr><td class="gig-time">22:15-22:45</td><td>PromenadorQuestern och med Baletten Paletten</td></tr>
+                            <tr><td class="gig-time">22:45-23:15</td><td>Axelbandet</td></tr>
+                            <tr><td class="gig-time">23:15-23:45</td><td>AllianceOrchestret och Chalmersbaletten</td></tr>
+                            <tr><td class="gig-time">23:45-00:15</td><td>Retuperän WBK</td></tr>
+                            <tr><td class="gig-time">00:15-00:45</td><td>Strindens Promenade Orchester</td></tr>
                         </tbody>
                     </table>
                 </section>
 
                 <section class="gig-section">
-                    <h3>SATURDAY 14th <br> CITY GIGS at BORGGÅRDEN</h3>
+                    <h3>SATURDAY<br>CITY GIGS @ BORGGÅRDEN</h3>
                     <table class="gig-schedule" aria-label="Saturday city gigs schedule">
                         <tbody>
-                            <tr>
-                                <td class="gig-time">10:00-10:30</td>
-                                <td>PromenadorQuestern och med Baletten Paletten</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">10:30-11:00</td>
-                                <td>Retuperän WBK</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">11:00-11:30</td>
-                                <td>Humpsvakar och Rumpskakar</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">11:30-12:00</td>
-                                <td>Axelbandet</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">12:00-12:30</td>
-                                <td>AllianceOrchestret och Chalmersbaletten</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">12:30-13:00</td>
-                                <td>Strindens Promenade Orchester</td>
-                            </tr>
+                            <tr><td class="gig-time">10:00-10:30</td><td>PromenadorQuestern och med Baletten Paletten</td></tr>
+                            <tr><td class="gig-time">10:30-11:00</td><td>Retuperän WBK</td></tr>
+                            <tr><td class="gig-time">11:00-11:30</td><td>Humpsvakar och Rumpskakar</td></tr>
+                            <tr><td class="gig-time">11:30-12:00</td><td>Axelbandet</td></tr>
+                            <tr><td class="gig-time">12:00-12:30</td><td>AllianceOrchestret och Chalmersbaletten</td></tr>
+                            <tr><td class="gig-time">12:30-13:00</td><td>Strindens Promenade Orchester</td></tr>
                         </tbody>
                     </table>
                 </section>
 
                 <section class="gig-section">
-                    <h3>SATURDAY 14th <br> MAIN CONCERT at MF</h3>
+                    <h3>SATURDAY<br>MAIN CONCERT @ MF</h3>
                     <table class="gig-schedule" aria-label="Saturday main concert schedule">
                         <tbody>
-                            <tr>
-                                <td class="gig-time">15:00-15:40</td>
-                                <td>AllianceOrchestret och Chalmersbaletten</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">15:40-16:20</td>
-                                <td>Axelbandet</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">16:20-17:00</td>
-                                <td>Humpsvakar och Rumpskakar</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">17:00-17:15</td>
-                                <td><strong>PAUSE</strong></td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">17:15-17:55</td>
-                                <td>PromenadorQuestern och med Baletten Paletten</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">17:55-18:35</td>
-                                <td>Strindens Promenade Orchester</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">18:35-19:15</td>
-                                <td>Retuperän WBK</td>
-                            </tr>
+                            <tr><td class="gig-time">15:00-15:40</td><td>AllianceOrchestret och Chalmersbaletten</td></tr>
+                            <tr><td class="gig-time">15:40-16:20</td><td>Axelbandet</td></tr>
+                            <tr><td class="gig-time">16:20-17:00</td><td>Humpsvakar och Rumpskakar</td></tr>
+                            <tr><td class="gig-time">17:00-17:15</td><td><strong>PAUSE</strong></td></tr>
+                            <tr><td class="gig-time">17:15-17:55</td><td>PQ &amp; Paletten</td></tr>
+                            <tr><td class="gig-time">17:55-18:35</td><td>Strindens</td></tr>
+                            <tr><td class="gig-time">18:35-19:15</td><td>Retuperän WBK</td></tr>
                         </tbody>
                     </table>
                 </section>
 
                 <section class="gig-section">
-                    <h3>SATURDAY 14th <br> PARTY at MF</h3>
+                    <h3>SATURDAY<br>PARTY @ MF</h3>
                     <table class="gig-schedule" aria-label="Saturday party gig schedule">
                         <tbody>
-                            <tr>
-                                <td class="gig-time">21:45-22:15</td>
-                                <td>Strindens Promenade Orchester</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">22:15-22:45</td>
-                                <td>Humpsvakar och Rumpskakar</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">22:45-23:15</td>
-                                <td>PromenadorQuestern och med Baletten Paletten</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">23:15-23:45</td>
-                                <td>AllianceOrchestret och Chalmersbaletten</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">23:45-00:15</td>
-                                <td>Retuperän WBK</td>
-                            </tr>
-                            <tr>
-                                <td class="gig-time">00:15-00:45</td>
-                                <td>Axelbandet</td>
-                            </tr>
+                            <tr><td class="gig-time">21:45-22:15</td><td>Strindens</td></tr>
+                            <tr><td class="gig-time">22:15-22:45</td><td>Humpsvakar och Rumpskakar</td></tr>
+                            <tr><td class="gig-time">22:45-23:15</td><td>PromenadorQuestern och med Baletten Paletten</td></tr>
+                            <tr><td class="gig-time">23:15-23:45</td><td>AllianceOrchestret och Chalmersbaletten</td></tr>
+                            <tr><td class="gig-time">23:45-00:15</td><td>Retuperän WBK</td></tr>
+                            <tr><td class="gig-time">00:15-00:45</td><td>Axelbandet</td></tr>
                         </tbody>
                     </table>
                 </section>
@@ -351,6 +233,43 @@
         </div>
         <div class="scroll-wrapper-end"></div>
     </div>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        (() => {
+            const venues = [
+                { name: "Kröken", coords: [59.34699943630691, 18.070643738272448] },
+                { name: "Borggården", coords: [59.34739985562139, 18.07372444416761] },
+                { name: "Östra Real school", coords: [59.339478501503756, 18.086217660883587] },
+                { name: "Medicinska Föreningen", coords: [59.34835907780092, 18.026639298435388] },
+                { name: "Maskinparken", coords: [59.352647984200104, 18.067263961244404] }
+            ];
+            const el = document.getElementById("natom-map");
+            if (!el || typeof L === "undefined") return;
+            const map = L.map(el, { scrollWheelZoom: false, zoomControl: true });
+            L.tileLayer("https://basemaps.cartocdn.com/rastertiles/positron/{z}/{x}/{y}.png", {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                maxZoom: 20
+            }).addTo(map);
+            const pin = L.divIcon({
+                className: "natom-marker",
+                html: '<span class="natom-marker__dot"></span>',
+                iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -13]
+            });
+            const bounds = [];
+            venues.forEach((venue) => {
+                L.marker(venue.coords, { icon: pin }).addTo(map)
+                    .bindPopup('<span class="natom-popup-title">' + venue.name + '</span>');
+                bounds.push(venue.coords);
+            });
+            map.fitBounds(bounds, { padding: [28, 28], maxZoom: 15 });
+            document.querySelectorAll('a[href="#2"]').forEach((link) => {
+                link.addEventListener("click", () => setTimeout(() => map.invalidateSize(), 250));
+            });
+            window.addEventListener("resize", () => map.invalidateSize());
+        })();
+    </script>
 
 </body>
 
