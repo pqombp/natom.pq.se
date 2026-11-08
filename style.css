@@ -30,20 +30,38 @@ h1 {
     text-align: center;
 }
 
-h2 { font-weight: 400; }
+h2 {
+    font-weight: 400;
+}
 
 /* Spacing adjustments */
-p { line-height: 1.2em; }
-h1 + h2, h1 + p { margin-top: 0; }
-p:has(+ nav) { margin-bottom: 0; }
-nav { margin-bottom: 4px; }
-nav + p { margin-top: 0; }
+p {
+    line-height: 1.2em;
+}
+
+h1+h2,
+h1+p {
+    margin-top: 0;
+}
+
+p:has(+ nav) {
+    margin-bottom: 0;
+}
+
+nav {
+    margin-bottom: 4px;
+}
+
+nav+p {
+    margin-top: 0;
+}
 
 body {
     margin: 0;
 }
 
-html, body {
+html,
+body {
     overscroll-behavior: none;
 }
 
@@ -52,6 +70,7 @@ html, body {
         background-image: url(img/PQxFragonard-med.webp);
     }
 }
+
 @media screen and (min-width: 601px) {
     .background {
         background-image: url(img/PQxFragonard.webp);
@@ -76,19 +95,33 @@ a:active {
     box-shadow: 0 0 var(--margin) #555;
     background-color: #fff6d5;
     width: auto;
-    
-    a { color: #a52a2a; }
-    a:hover, a:focus-visible { color: #e00000; }
+
+    a {
+        color: #a52a2a;
+    }
+
+    a:hover,
+    a:focus-visible {
+        color: #e00000;
+    }
 }
 
-header, footer {
+header,
+footer {
     color: #d8d6c4;
     text-align: center;
     background: #555a;
     padding: var(--margin);
-    
-    a, h1 { color: #ebad39; }
-    a:hover, a:focus-visible { color: #f0ebc5; }
+
+    a,
+    h1 {
+        color: #ebad39;
+    }
+
+    a:hover,
+    a:focus-visible {
+        color: #f0ebc5;
+    }
 }
 
 .title {
@@ -118,8 +151,8 @@ header, footer {
     color: #fff6d5;
 }
 
-.back:hover::after, .back:focus-visible::after
-{
+.back:hover::after,
+.back:focus-visible::after {
     text-shadow: 0 0 2mm #ff0000;
 }
 
@@ -134,17 +167,23 @@ header, footer {
         position: absolute;
         pointer-events: none;
     }
-    
+
     label {
         cursor: pointer;
         color: #ebad39;
         text-decoration: underline;
-        
-        &:hover, &:focus { color: #f0ebc5; }
-        &:active { text-decoration: none; }
+
+        &:hover,
+        &:focus {
+            color: #f0ebc5;
+        }
+
+        &:active {
+            text-decoration: none;
+        }
     }
-    
-    input:focus-visible + label {
+
+    input:focus-visible+label {
         color: #f0ebc5;
     }
 }
@@ -153,11 +192,11 @@ header, footer {
 
 body:has(#htoggle:checked) {
     overflow-y: hidden;
-    
+
     .vertical-mode {
         display: none;
     }
-    
+
     .scroll-wrapper {
         height: 100svh;
         display: flex;
@@ -169,7 +208,7 @@ body:has(#htoggle:checked) {
         overflow-y: hidden;
         overscroll-behavior-y: none;
     }
-    
+
     /* Maybe fixes scroll-snap issue where I can't scroll to title page */
     .scroll-wrapper-start {
         scroll-snap-align: start;
@@ -177,14 +216,14 @@ body:has(#htoggle:checked) {
         width: 0;
         flex: none;
     }
-    
+
     .scroll-wrapper-end {
         scroll-snap-align: end;
         scroll-snap-stop: always;
         width: 0;
         flex: none;
     }
-    
+
     .page-wrapper {
         position: relative;
         scroll-snap-align: center;
@@ -196,11 +235,11 @@ body:has(#htoggle:checked) {
         scrollbar-width: none;
         overscroll-behavior-y: none;
     }
-    
+
     .page {
         min-height: 220mm;
     }
-    
+
     .header-wrapper {
         box-sizing: border-box;
         width: min(100vw, calc(var(--page-width) + var(--side-width)));
@@ -212,7 +251,7 @@ body:has(#htoggle:checked) {
         padding: var(--margin);
         padding-left: calc(var(--margin) + max(0pt, var(--side-width)));
     }
-    
+
     .footer-wrapper {
         box-sizing: border-box;
         width: min(100vw, var(--page-width));
@@ -222,37 +261,39 @@ body:has(#htoggle:checked) {
         padding: var(--margin);
         margin-left: calc(0pt - min(100vw, var(--page-width)));
     }
-    
+
     .header-concealer {
         display: flex;
         flex-flow: row nowrap;
-        
+
         .page-wrapper {
             z-index: 1;
         }
     }
-    
+
     .footer-concealer {
         display: flex;
         flex-flow: row nowrap;
         width: calc(2 * min(100vw, var(--page-width)) + var(--side-width));
         flex: none;
-        
+
         .page-wrapper {
             z-index: 1;
         }
     }
-    
+
     .back::after {
         content: "☚";
         position: relative;
         top: 3px;
     }
-    
+
     .anchor {
         transform: translateX(calc(min(var(--page-width), 100vw) + var(--side-width) - var(--margin)));
     }
-}  /* end horizontal mode */
+}
+
+/* end horizontal mode */
 
 /* Vertical mode */
 
@@ -260,16 +301,17 @@ body:has(#vtoggle:checked) {
     .horizontal-mode {
         display: none;
     }
-    
+
     .scroll-wrapper {
         width: min(100vw, var(--page-width));
         margin: 0 auto;
     }
-    
-    .header-wrapper, .footer-wrapper {
+
+    .header-wrapper,
+    .footer-wrapper {
         padding: var(--margin);
     }
-    
+
     .back::after {
         content: "☚";
         writing-mode: vertical-rl;
@@ -278,4 +320,27 @@ body:has(#vtoggle:checked) {
         right: 6px;
         bottom: 5px;
     }
-}  /* end vertical mode */
+}
+
+/* end vertical mode */
+
+#natom-map {
+    width: 100%;
+    height: 500px;
+    border: 3px solid #a52a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Customise Leaflet popups to match NATOM */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background: #fff6d5;
+    color: #012f1d;
+}
+
+.leaflet-popup-content {
+    font-family: inherit;
+    font-size: 16px;
+}
